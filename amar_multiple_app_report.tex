@@ -1,0 +1,1587 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{colortbl}
+
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tocloft}
+
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{courier}
+
+\usepackage{setspace}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\tcbuselibrary{skins, breakable}
+
+%--------------------------------------------------
+%            COLOR DEFINITIONS
+%--------------------------------------------------
+
+\definecolor{primary}{RGB}{0,188,212}
+\definecolor{secondary}{RGB}{124,77,255}
+\definecolor{accent}{RGB}{255,193,7}
+
+\definecolor{softblue}{RGB}{232,247,255}
+\definecolor{softgreen}{RGB}{236,251,241}
+\definecolor{softamber}{RGB}{255,249,230}
+
+% Code UI Colors (VS Code style)
+\definecolor{codebg}{RGB}{30,30,30}
+\definecolor{codeblue}{RGB}{86,156,214}
+\definecolor{codegreen}{RGB}{152,195,121}
+\definecolor{codeorange}{RGB}{209,154,102}
+
+%--------------------------------------------------
+%            TCOLORBOX
+%--------------------------------------------------
+
+\newtcolorbox{reportbox}[1][]{
+    enhanced, breakable,
+    colback=softblue,
+    colframe=primary!80,
+    arc=4pt,
+    title=#1
+}
+
+\newtcolorbox{featurebox}[1][]{
+    enhanced, breakable,
+    colback=softgreen,
+    colframe=secondary!80,
+    arc=4pt,
+    title=#1
+}
+
+\newtcolorbox{insightbox}[1][]{
+    enhanced, breakable,
+    colback=softamber,
+    colframe=accent!80!black,
+    arc=4pt,
+    title=#1
+}
+
+%--------------------------------------------------
+%            HEADER
+%--------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Amar Multiple App}
+\fancyhead[R]{Tanjim Tajwar Arnab}
+\fancyfoot[C]{\thepage}
+
+%--------------------------------------------------
+%            HYPERLINK
+%--------------------------------------------------
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=secondary
+}
+
+%--------------------------------------------------
+%            CODE STYLE (BEST UI)
+%--------------------------------------------------
+
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small\color{white},
+    keywordstyle=\color{codeblue}\bfseries,
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codeorange},
+    numberstyle=\scriptsize\color{white!55},
+    numbers=left,
+    numbersep=10pt,
+    frame=single,
+    framerule=0.8pt,
+    rulecolor=\color{primary!80},
+    xleftmargin=10pt,
+    xrightmargin=6pt,
+    framexleftmargin=8pt,
+    framexrightmargin=6pt,
+    framesep=8pt,
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    tabsize=2,
+    keepspaces=true,
+    captionpos=b,
+    aboveskip=10pt,
+    belowskip=10pt
+}
+
+\lstdefinelanguage{Dart}{
+  keywords={class,const,final,var,void,int,double,String,bool,if,else,for,while,return,new,this,super,extends,import,package,true,false,null,async,await},
+}
+
+\lstdefinelanguage{bash}{
+  morekeywords={flutter,adb,avdmanager,sdkmanager,emulator},
+  sensitive=true,
+  morecomment=[l]{\#},
+  morestring=[b]"
+}
+
+%--------------------------------------------------
+%            SPACING
+%--------------------------------------------------
+
+\onehalfspacing
+
+%--------------------------------------------------
+%            DOCUMENT START
+%--------------------------------------------------
+
+\begin{document}
+
+%--------------------------------------------------
+%            MODERN COVER PAGE
+%--------------------------------------------------
+
+%--------------------------------------------------
+%            CLEAN WHITE COVER PAGE
+%--------------------------------------------------
+
+\begin{titlepage}
+
+\begin{center}
+
+\vspace*{1cm}
+
+% Top Line
+\noindent\rule{\textwidth}{1.2pt}
+
+\vspace{0.5cm}
+
+% Title
+{\Huge \bfseries Mobile App Development}\\[0.3cm]
+
+{\large Lab Project Report}
+
+\vspace{0.5cm}
+
+\noindent\rule{\textwidth}{0.8pt}
+
+\vspace{1.5cm}
+
+% Project Box
+\begin{tcolorbox}[
+colback=white,
+colframe=primary,
+width=0.7\textwidth,
+arc=6pt,
+boxrule=1pt
+]
+\centering
+\Large \textbf{6th Semester}\\[6pt]
+\normalsize
+Course Code : CSE 618
+\end{tcolorbox}
+
+\vspace{1.5cm}
+
+% Student Info
+\begin{tcolorbox}[
+colback=white,
+colframe=secondary,
+width=0.7\textwidth,
+arc=6pt
+]
+\begin{flushleft}
+\textbf{Name:} Tanjim Tajwar Arnab\\
+\textbf{Student ID:} 22701066\\
+\textbf{Department:} Computer Science and Engineering\\
+\textbf{University:} University of Chittagong
+\end{flushleft}
+\end{tcolorbox}
+
+\vspace{1cm}
+
+% Features Box
+\begin{tcolorbox}[
+colback=softblue,
+colframe=primary,
+width=0.7\textwidth,
+arc=6pt
+]
+\small
+\centering
+\textbf{Key Features}\\
+
+\begin{multicols}{2}
+\begin{itemize}
+\item Temperature Converter
+\item BMI Calculator
+\item General Calculator
+\item Islamic Inheritance
+\item Reverse String Tool
+\item To-Do List Manager
+\item Phone Call Simulator
+\item Zakah Calculator
+\item Email Sender Simulator
+\item Children Math Quiz
+\end{itemize}
+\end{multicols}
+
+\end{tcolorbox}
+\vfill
+
+\textbf{Submitted To}\\
+Prof. Dr. Mohammad Osiur Rahman\\
+Professor, Computer Science and Engineering\\ 
+University of Chittagong
+
+\vspace{0.5cm}
+
+\today
+
+\end{center}
+
+\end{titlepage}
+
+%--------------------------------------------------
+%        TABLE OF CONTENTS & LISTS
+%--------------------------------------------------
+
+\tableofcontents
+
+
+\listoffigures
+
+
+\listoftables
+\newpage
+
+
+
+
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\begin{reportbox}[Overview]
+\textbf{Amar Multiple App} is a multi-functional mobile application developed using the Flutter framework, designed to integrate a variety of everyday utilities into a single unified platform. The application eliminates the need for multiple standalone apps by combining essential tools related to health, productivity, finance, and education within one user-friendly interface.
+\end{reportbox}
+
+\begin{insightbox}[Key Highlights]
+The system consists of ten core modules, including a Temperature Converter, BMI Calculator, General Calculator, Islamic Inheritance Calculator, Reverse String Tool, To-Do List Manager, Phone Call Simulator, Zakah Calculator, Email Sender Simulator, and a Children’s Math Quiz. Each module is independently designed yet seamlessly integrated, demonstrating a modular and scalable architecture.
+
+\medskip
+The application emphasizes fast performance through local processing, intuitive navigation using Flutter’s routing system, and a clean, beginner-friendly user interface. This project highlights the practical implementation of software engineering principles, including modular design, state management, and formula-based logic, making it suitable for both academic learning and real-world application development.
+\end{insightbox}
+
+%--------------------------------------------------
+%        DEVELOPMENT ENVIRONMENT GUIDE
+%--------------------------------------------------
+\newpage
+\section{Setting Up the Development Environment}
+
+\begin{insightbox}[How to Use This Report as a Tutorial]
+Read this report in order and implement each step while coding in VS Code. Do not skip setup validation commands. After every module, run the app and test output immediately. This practice helps beginners learn Flutter by doing, not only by reading.
+\end{insightbox}
+
+\subsection{Who This Tutorial Is For}
+This report is written for beginners who are new to Flutter, Dart, and mobile app development. If you can install software, run terminal commands, and edit files in VS Code, you can complete this project.
+
+\subsection{Learning Outcomes}
+By following this tutorial-style report, a beginner should be able to:
+\begin{itemize}
+\item Install and configure Flutter development tools.
+\item Create and run a Flutter app from scratch.
+\item Build multi-screen apps with route-based navigation.
+\item Handle user input, validation, and local state updates.
+\item Implement formula-based logic modules in Dart.
+\item Organize project code using reusable widgets and folders.
+\end{itemize}
+
+\subsection{Install Flutter SDK}
+Download Flutter SDK from the official Flutter website and extract it to a local directory such as \texttt{C:\textbackslash src\textbackslash flutter}. Then add Flutter's \texttt{bin} path to environment variables and verify installation by running \texttt{flutter --version} and \texttt{flutter doctor}.
+
+\begin{reportbox}[Quick Verification Steps]
+\begin{itemize}
+\item Run \texttt{flutter --version} to confirm SDK availability.
+\item Run \texttt{flutter doctor} to detect missing dependencies.
+\item Complete all required setup suggestions shown by Flutter Doctor.
+\end{itemize}
+\end{reportbox}
+
+\subsection{Install Visual Studio Code and Extensions}
+Install Visual Studio Code and then add the \textbf{Flutter} and \textbf{Dart} extensions from the Extensions Marketplace. These provide project templates, debugging support, code completion, and integrated Flutter commands.
+
+\subsection{Set Up an Android Emulator in VS Code (No Android Studio)}
+For a lightweight setup, configure emulator tooling from command-line Android SDK tools and control device launches from VS Code terminal.
+
+\begin{featurebox}[Practical Setup Flow]
+\begin{enumerate}
+\item Install Android SDK Command-line Tools.
+\item Install platform tools (\texttt{adb}) and at least one system image.
+\item Create an AVD from command line.
+\item Start the emulator and verify with \texttt{flutter devices}.
+\end{enumerate}
+\end{featurebox}
+
+\subsection{Create Flutter Project}
+Create the project using:
+\begin{lstlisting}[language=bash, caption={Create project command}]
+flutter create amar_multiple_app
+\end{lstlisting}
+After creation, enter the project directory and run \texttt{flutter pub get} if needed.
+
+
+\newpage
+\subsection{Run Application}
+Start the app from VS Code terminal using:
+\begin{lstlisting}[language=bash, caption={Run app command}]
+flutter run
+\end{lstlisting}
+This launches the application on the selected emulator or connected device.
+
+\begin{featurebox}[Beginner Checkpoint]
+Before moving to the next chapter, confirm these three items:
+\begin{enumerate}
+\item \texttt{flutter doctor} shows no critical errors.
+\item Your emulator or phone appears in \texttt{flutter devices}.
+\item The default Flutter counter app runs successfully.
+\end{enumerate}
+\end{featurebox}
+
+%--------------------------------------------------
+%        RUNNING AND TESTING
+%--------------------------------------------------
+
+\section{Running and Testing the App}
+
+\subsection{Run on Emulator}
+Open an Android emulator, ensure it appears in \texttt{flutter devices}, then execute \texttt{flutter run}. Use hot reload with \texttt{r} and hot restart with \texttt{R} in terminal for rapid testing cycles.
+
+\subsection{Deploy to Physical Android Phone via USB Tethering}
+Enable Developer Options and USB Debugging on the Android phone, connect via USB cable, approve RSA prompt, and confirm the device appears in \texttt{flutter devices}. Then run the app with \texttt{flutter run}.
+
+\subsection{Troubleshooting for Beginners}
+\begin{itemize}
+\item If no device appears, reconnect cable and run \texttt{adb devices}.
+\item If build fails, run \texttt{flutter clean} then \texttt{flutter pub get}.
+\item If Gradle fails first time, wait for dependency download and rerun.
+\item If emulator is slow, close unused applications and cold boot emulator.
+\end{itemize}
+
+\begin{insightbox}[Testing Recommendation]
+Before final submission, validate all major modules (calculator, converter, inheritance, to-do, quiz, and communication simulators) on both emulator and physical phone to ensure stable behavior across environments.
+\end{insightbox}
+
+%--------------------------------------------------
+%        FLUTTER PROJECT STRUCTURE
+%--------------------------------------------------
+
+\section{Understanding a Flutter Project Structure}
+
+\begin{reportbox}[How to Read the Project Structure]
+Beginners should first understand \texttt{main.dart}, then \texttt{lib/screens/}, then \texttt{lib/widgets/}. This learning order makes Flutter architecture easier because you see app entry, navigation, feature screens, and shared UI components in sequence.
+\end{reportbox}
+
+\subsection{The \texttt{pubspec.yaml} File}
+This file is the central project manifest. It defines the project name, version, environment constraints, dependencies, dev dependencies, and asset configuration. Any new package integration or asset registration should be added here.
+
+\subsection{The \texttt{test} Folder}
+The \texttt{test} directory contains automated tests such as unit tests and widget tests. Even in small projects, basic tests improve reliability by validating expected behavior after code updates.
+
+\subsection{The \texttt{lib} Folder}
+The \texttt{lib} directory contains the main application source code. In this project, screens are organized under \texttt{lib/screens/} and reusable components are stored under \texttt{lib/widgets/}, supporting modular and maintainable development.
+
+%--------------------------------------------------
+%                CHAPTER 1
+%--------------------------------------------------
+
+\section{Introduction}
+
+\subsection{Background of the Study}
+
+In recent years, mobile applications have become an essential part of everyday life. With the rapid growth of smartphones and internet accessibility, users rely heavily on mobile apps for performing daily tasks such as calculations, communication, education, and productivity management. As a result, there is a growing demand for applications that can integrate multiple functionalities into a single platform.
+
+Flutter, developed by Google, has emerged as a powerful framework for building cross-platform mobile applications. It allows developers to create visually attractive and high-performance apps using a single codebase. This project utilizes Flutter to design and develop a multi-functional application named \textbf{Amar Multiple App}, which combines several useful tools and mini-applications into one unified system.
+
+Unlike traditional applications that focus on a single functionality, this project integrates multiple utilities such as temperature conversion, BMI calculation, Islamic inheritance calculation, string manipulation, communication simulation, and educational tools. This approach enhances user convenience and reduces the need to install multiple separate applications.
+
+\begin{reportbox}[Problem Statement]
+Most utility apps in app stores are designed around one task only. This creates several practical issues for users: increased storage consumption, repetitive user interfaces, inconsistent user experience, and frequent app switching. The \textbf{Amar Multiple App} addresses this by merging common utility functions into a single consistent environment.
+\end{reportbox}
+
+\subsection{Objective of the Project}
+
+The main objective of this project is to develop a comprehensive and user-friendly mobile application that integrates multiple useful features into a single platform. The specific objectives of the project are as follows:
+
+\begin{itemize}
+\item To design and develop a multi-functional mobile application using Flutter.
+\item To implement real-life utility features such as temperature conversion and BMI calculation.
+\item To incorporate Islamic financial tools such as inheritance and Zakah calculators.
+\item To create interactive and educational modules such as a children's math quiz.
+\item To simulate communication features like phone calls and email sending.
+\item To design an attractive, responsive, and user-friendly interface.
+\item To improve programming skills in Dart and Flutter framework.
+\end{itemize}
+
+\subsection{Scope of the Project}
+
+The scope of this project is focused on developing a mobile application that combines multiple small-scale applications into one integrated system. The application is designed to be used by a wide range of users, including students, professionals, and general smartphone users.
+
+The application includes ten major features:
+\begin{itemize}
+\item Temperature Converter (Celsius to Fahrenheit)
+\item BMI Calculator
+\item General Calculator
+\item Islamic Inheritance (Fara’id) Calculator
+\item Reverse String Tool
+\item To-Do List Manager
+\item Phone Call Simulation
+\item Zakah Calculator
+\item Email Sending Simulation
+\item Children Math Quiz
+\end{itemize}
+
+However, the project does not include advanced backend systems such as cloud storage, real-time communication, or authentication systems. All functionalities are implemented locally within the application.
+
+\subsection{Methodology}
+
+The development of this project follows a structured and systematic approach. The methodology used in this project includes the following steps:
+
+\begin{enumerate}
+\item \textbf{Requirement Analysis:} Identifying the features and functionalities to be included in the application.
+\item \textbf{Design Phase:} Creating the user interface design and application structure.
+\item \textbf{Development Phase:} Implementing the features using Flutter and Dart programming language.
+\item \textbf{Testing Phase:} Testing each module to ensure proper functionality and user experience.
+\item \textbf{Deployment:} Running the application on different platforms such as Android and Web.
+\end{enumerate}
+
+This methodology ensures that the application is developed efficiently and meets the intended objectives.
+
+\begin{reportbox}[Software Development Lifecycle Used]
+\begin{enumerate}
+\item \textbf{Planning:} Defined module list, user flow, and minimum functional requirements.
+\item \textbf{UI Prototyping:} Designed card-based home layout and reusable form patterns.
+\item \textbf{Iterative Coding:} Built each module independently and validated output logic.
+\item \textbf{Integration:} Connected all modules through centralized navigation from home screen.
+\item \textbf{Validation:} Performed manual test cases for normal, boundary, and invalid inputs.
+\end{enumerate}
+\end{reportbox}
+
+
+%--------------------------------------------------
+%                CHAPTER 2
+%--------------------------------------------------
+
+\section{Technology Overview}
+
+\subsection{Flutter Framework}
+
+Flutter is an open-source UI software development kit (SDK) developed by Google. It is widely used for building cross-platform applications for mobile, web, and desktop using a single codebase. Flutter uses the Dart programming language and provides a rich set of pre-designed widgets that help developers create visually appealing user interfaces.
+
+One of the key advantages of Flutter is its \textbf{hot reload} feature, which allows developers to see changes in real-time without restarting the application. This significantly improves development speed and productivity.
+
+Flutter follows a widget-based architecture, where everything in the application is considered a widget, including layouts, buttons, text, and even the entire screen. This approach makes the UI highly customizable and flexible.
+
+In this project, Flutter is used to design and implement all the user interfaces and navigation systems. The framework enables smooth animations, responsive layouts, and consistent design across different devices.
+
+\subsection{Dart Programming Language}
+
+Dart is a modern, object-oriented programming language developed by Google. It is the primary language used in Flutter development. Dart is known for its simplicity, efficiency, and strong typing system.
+
+Some important features of Dart include:
+
+\begin{itemize}
+\item \textbf{Object-Oriented Programming:} Supports classes, inheritance, and encapsulation.
+\item \textbf{Asynchronous Programming:} Provides support for async and await for handling tasks such as delays and API calls.
+\item \textbf{Strong Typing:} Helps in reducing runtime errors.
+\item \textbf{Fast Execution:} Compiles to native code for better performance.
+\end{itemize}
+
+In this project, Dart is used to implement the application logic, including calculations, data processing, and user interactions. It ensures efficient and smooth execution of all features.
+
+\subsection{Development Tools (Android Studio / VS Code)}
+
+The development of this project is carried out using modern and efficient development tools. The primary tools used are:
+
+\textbf{Visual Studio Code (VS Code):}  
+VS Code is a lightweight and powerful code editor that provides excellent support for Flutter and Dart development. It includes features such as syntax highlighting, debugging tools, extensions, and integrated terminal support.
+
+\textbf{Android Studio:}  
+Android Studio is an official Integrated Development Environment (IDE) for Android development. It provides advanced tools for building, testing, and debugging mobile applications. It also includes an emulator for testing applications without a physical device.
+
+\textbf{Flutter SDK:}  
+The Flutter Software Development Kit (SDK) is used to build and run the application. It includes libraries, tools, and frameworks required for Flutter development.
+
+\textbf{Browser (Chrome/Edge):}  
+The application is also tested on web platforms using modern browsers like Google Chrome and Microsoft Edge.
+
+These tools collectively help in efficient development, testing, and deployment of the application.
+
+\begin{insightbox}[Why This Technology Stack]
+The selected stack is optimized for rapid prototyping and clean user interface development. Flutter provides reusable widgets and high rendering performance, Dart keeps logic readable and maintainable, and VS Code/Android Studio support fast debugging and testing. This combination is ideal for student projects that need both development speed and practical quality.
+\end{insightbox}
+
+%--------------------------------------------------
+%                CHAPTER 3
+%--------------------------------------------------
+
+\section{System Design}
+
+\subsection{System Architecture}
+
+The system architecture of the \textbf{Amar Multiple App} is designed using a modular approach. Each feature of the application is developed as an independent module, allowing better organization, maintainability, and scalability.
+
+The application follows a simple layered architecture:
+
+\begin{itemize}
+\item \textbf{Presentation Layer:} This layer is responsible for the user interface. It includes all screens such as Home Screen, BMI Screen, Temperature Screen, and others.
+\item \textbf{Logic Layer:} This layer handles all the calculations and processing logic, such as BMI computation, temperature conversion, and inheritance calculation.
+\item \textbf{Navigation Layer:} This layer manages the routing between different screens using Flutter's navigation system.
+\end{itemize}
+
+Each module interacts with the user independently, ensuring that the failure of one module does not affect the overall application.
+
+\subsection{User Interface Design}
+
+The user interface of the application is designed to be modern, colorful, and user-friendly. Special attention has been given to ensure a consistent design across all screens.
+
+The following design principles are followed:
+
+\begin{itemize}
+\item \textbf{Consistency:} All screens use a similar color scheme, typography, and layout structure.
+\item \textbf{Responsiveness:} The application adapts to different screen sizes and devices.
+\item \textbf{Simplicity:} The interface is kept simple so that users can easily understand and use the features.
+\item \textbf{Visual Appeal:} Gradients, icons, and cards are used to enhance the overall look of the application.
+\end{itemize}
+
+The home screen acts as a dashboard that provides access to all features through a grid layout. Each feature is represented with an icon and color combination to make it easily identifiable.
+
+\subsection{Navigation Flow}
+
+Navigation in the application is handled using Flutter's routing system. Each feature is assigned a unique route name, which allows easy navigation between screens.
+
+The navigation flow works as follows:
+
+\begin{enumerate}
+\item The user starts at the Home Screen.
+\item The user selects a feature from the grid.
+\item The application navigates to the selected feature screen.
+\item After completing the task, the user can return to the Home Screen.
+\end{enumerate}
+
+This simple navigation structure ensures a smooth and intuitive user experience.
+
+\begin{reportbox}[Design Decisions and Rationale]
+\begin{itemize}
+\item \textbf{Dashboard Entry Point:} Reduces interaction cost by showing all modules on first screen.
+\item \textbf{Module Independence:} Minimizes coupling, making updates easier and safer.
+\item \textbf{Form-Centric Screens:} Most tools rely on input/output forms, so a consistent pattern improves usability.
+\item \textbf{Local Computation:} Keeps app fast and functional without internet dependency.
+\end{itemize}
+\end{reportbox}
+
+\subsection{System Flow Diagram}
+
+The overall workflow of the application can be described as follows:
+
+\begin{itemize}
+\item User opens the application.
+\item Home Screen displays all available features.
+\item User selects a feature.
+\item Input is provided by the user.
+\item The system processes the input.
+\item Output/result is displayed.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\safeimage{0.7\textwidth}{system_flow.png}
+\caption{System Flow Diagram of Amar Multiple App}
+\end{figure}
+
+
+%--------------------------------------------------
+%                CHAPTER 4
+%--------------------------------------------------
+
+\section{Implementation of Features}
+
+This chapter describes the implementation details of each feature included in the \textbf{Amar Multiple App}. Each module is designed as an independent unit and performs a specific task.
+
+\begin{insightbox}[Build Pattern Used in Every Module]
+To help beginners, each feature follows the same development pattern:
+\begin{enumerate}
+\item Create a new screen class in \texttt{lib/screens/}.
+\item Add input fields and action button.
+\item Write logic method (convert/calculate/reverse/check).
+\item Validate input and show feedback for invalid cases.
+\item Display result using a styled result card.
+\item Register route in \texttt{main.dart} and add home-screen card.
+\end{enumerate}
+\end{insightbox}
+
+\subsection{Step-by-Step Workflow for Building One Feature}
+Use the following checklist each time you create a new feature screen:
+\begin{enumerate}
+\item Create a Dart file in \texttt{lib/screens/feature\_name\_screen.dart}.
+\item Add \texttt{static const routeName}.
+\item Build UI with \texttt{Scaffold}, input fields, button, and result area.
+\item Write one method to process user input.
+\item Add \texttt{TextEditingController} and dispose it properly.
+\item Register the screen route in \texttt{main.dart}.
+\item Add the feature card in \texttt{home\_screen.dart}.
+\item Run app and test normal, boundary, and invalid input cases.
+\end{enumerate}
+
+%--------------------------------------------------
+\subsection{Temperature Converter}
+
+The Temperature Converter module allows users to convert temperature from Celsius to Fahrenheit.
+
+The user inputs a temperature value in Celsius, and the system calculates the equivalent Fahrenheit value using a mathematical formula.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Simple input field for Celsius value
+\item Instant calculation
+\item Clean and readable output display
+\end{itemize}
+
+\textbf{Working Principle:}
+The conversion is performed using the formula:
+\[
+F = (C \times \frac{9}{5}) + 32
+\]
+
+\textbf{User Interface:}
+The interface consists of an input field, a button, and a result display container.
+
+\begin{featurebox}[Implementation Details]
+\textbf{Input:} Celsius value from user text field.\newline
+\textbf{Processing:} Parse value as double and apply conversion formula.\newline
+\textbf{Validation:} Empty or invalid input is prevented with message feedback.\newline
+\textbf{Output:} Formatted Fahrenheit value shown instantly in result area.
+\end{featurebox}
+
+\begin{reportbox}[Try It Yourself]
+Extend this module to support Fahrenheit-to-Celsius conversion. Add a toggle button for conversion direction and update formula logic accordingly.
+\end{reportbox}
+
+%--------------------------------------------------
+\subsection{BMI Calculator}
+
+The BMI (Body Mass Index) Calculator is used to determine whether a person is underweight, normal, overweight, or obese.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Input fields for height and weight
+\item Automatic BMI calculation
+\item Category classification with color indication
+\end{itemize}
+
+\textbf{Working Principle:}
+BMI is calculated using:
+\[
+BMI = \frac{Weight}{Height^2}
+\]
+
+\textbf{User Interface:}
+The UI provides fields for height and weight along with a result section that displays BMI value and category.
+
+\begin{featurebox}[Implementation Details]
+\textbf{Input:} Height and weight values.\newline
+\textbf{Processing:} Converts units and calculates BMI.\newline
+\textbf{Validation:} Non-positive values are rejected.\newline
+\textbf{Output:} Numeric BMI with category label (Underweight/Normal/Overweight/Obese).
+\end{featurebox}
+
+\begin{reportbox}[Try It Yourself]
+Add support for imperial units (feet/inches and pounds) and allow users to switch between metric and imperial modes.
+\end{reportbox}
+
+%--------------------------------------------------
+\subsection{Calculator}
+
+The Calculator module performs basic arithmetic operations such as addition, subtraction, multiplication, and division.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item User-friendly keypad
+\item Supports multiple operations
+\item Instant result calculation
+\end{itemize}
+
+\textbf{User Interface:}
+The interface includes numeric buttons, operator buttons, and a display screen for showing results.
+
+%--------------------------------------------------
+\subsection{Islamic Inheritance (Fara’id) App}
+
+This module calculates the distribution of wealth among heirs based on Islamic inheritance rules.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Input for number of sons and daughters
+\item Automatic share calculation
+\item Clear result breakdown
+\end{itemize}
+
+\textbf{Working Principle:}
+Each son receives double the share of each daughter. The total wealth is divided based on this ratio.
+
+\textbf{User Interface:}
+The interface includes input fields and a result section showing the calculated shares.
+
+%--------------------------------------------------
+\subsection{Reverse String}
+
+This module allows users to reverse any input text.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Simple text input
+\item Instant reversal
+\item Clean output display
+\end{itemize}
+
+\textbf{Working Principle:}
+The input string is reversed using string manipulation techniques.
+
+%--------------------------------------------------
+\subsection{To-Do List}
+
+The To-Do List module helps users manage daily tasks.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Add tasks
+\item Delete tasks
+\item Mark tasks as completed
+\end{itemize}
+
+\textbf{User Interface:}
+The UI displays a list of tasks with options to add and remove items.
+
+%--------------------------------------------------
+\subsection{Phone Call Simulator}
+
+This module simulates a phone call interface.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Input phone number
+\item Simulated incoming call screen
+\item Accept and decline options
+\end{itemize}
+
+\textbf{Working Principle:}
+The module does not perform real calls but simulates a call interface for demonstration purposes.
+
+%--------------------------------------------------
+\subsection{Zakah Calculator}
+
+The Zakah Calculator helps users calculate the amount of Zakah based on their wealth.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Input total wealth
+\item Automatic calculation
+\item Simple and clear output
+\end{itemize}
+
+\textbf{Working Principle:}
+Zakah is calculated as 2.5\% of total wealth.
+
+%--------------------------------------------------
+\subsection{Email Sending App}
+
+This module simulates sending an email.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Input email, subject, and message
+\item Simulated email notification
+\item Simple interface
+\end{itemize}
+
+\textbf{Working Principle:}
+The app opens the email client and displays a simulated message indicating that an email has been received.
+
+%--------------------------------------------------
+\subsection{Children Math App}
+
+This module is designed for children to practice basic math.
+
+\textbf{Key Features:}
+\begin{itemize}
+\item Random math questions
+\item Score tracking
+\item Instant feedback
+\end{itemize}
+
+\textbf{Working Principle:}
+Random numbers are generated, and users solve simple addition problems.
+
+%--------------------------------------------------
+%                CHAPTER 5
+%--------------------------------------------------
+
+\section{Results and Discussion}
+
+\subsection{App Performance}
+
+The developed application, \textbf{Amar Multiple App}, performs efficiently across different platforms, including mobile and web environments. All features respond quickly to user inputs, and calculations are performed instantly without noticeable delay.
+
+The use of Flutter ensures smooth rendering of user interfaces and consistent performance across devices. The application does not require heavy system resources, making it suitable for a wide range of devices.
+
+\begin{reportbox}[Observed Performance Indicators]
+\begin{itemize}
+\item Fast screen transitions due to lightweight routing.
+\item Near-instant formula-based calculations across utility modules.
+\item Stable behavior in repeated input/output cycles.
+\item Minimal memory load because of local-only data processing.
+\end{itemize}
+\end{reportbox}
+
+\subsection{User Experience}
+
+User experience is one of the key strengths of this application. The interface is designed to be simple, colorful, and easy to navigate. Each feature is clearly labeled, allowing users to quickly understand and access different functionalities.
+
+The use of cards, gradients, icons, and responsive layouts enhances the visual appeal of the application. Feedback mechanisms such as messages, result displays, and interactive buttons improve user interaction.
+
+Additionally, the home screen acts as a centralized dashboard, enabling users to access all features from a single place, which significantly improves usability.
+
+\subsection{Advantages of the System}
+
+The developed system offers several advantages:
+
+\begin{itemize}
+\item \textbf{Multi-functionality:} Combines multiple useful applications into one platform.
+\item \textbf{User-Friendly Interface:} Simple and intuitive design suitable for all users.
+\item \textbf{Lightweight Application:} Does not require high system resources.
+\item \textbf{Cross-Platform Support:} Runs on Android and web platforms.
+\item \textbf{Educational Value:} Includes learning tools such as the math quiz.
+\item \textbf{Practical Utility:} Provides real-life tools like BMI, Zakah, and inheritance calculators.
+\end{itemize}
+\begin{insightbox}[Limitations]
+The current version prioritizes functional clarity over production-grade architecture. Persistent storage, automated testing pipelines, and backend integration are intentionally excluded to keep the first release focused and manageable.
+\end{insightbox}
+%--------------------------------------------------
+%                CHAPTER 6
+%--------------------------------------------------
+
+\section{Conclusion and Future Work}
+
+\subsection{Conclusion}
+
+In conclusion, the \textbf{Amar Multiple App} successfully demonstrates the development of a multi-functional mobile application using Flutter. The application integrates various tools and utilities into a single platform, providing convenience and efficiency for users.
+
+The project highlights the power of Flutter in creating attractive and responsive user interfaces. It also demonstrates the effective use of Dart programming for implementing logic and functionality.
+
+Through this project, important concepts such as UI design, state management, user interaction, and modular development have been explored and implemented. The application meets its objectives and serves as a practical solution for combining multiple features in one system.
+
+\subsection{Future Improvements}
+
+Although the application is functional and complete, there are several areas for future improvement:
+
+\begin{itemize}
+\item \textbf{User Authentication:} Adding login and registration features.
+\item \textbf{Cloud Integration:} Storing data using Firebase or other cloud services.
+\item \textbf{Advanced UI Design:} Adding animations and themes (dark/light mode).
+\item \textbf{Real Communication Features:} Implementing real phone call and email functionalities.
+\item \textbf{Database Support:} Saving user data such as tasks and quiz scores.
+\item \textbf{Multilingual Support:} Supporting multiple languages for wider accessibility.
+\end{itemize}
+
+These improvements can enhance the functionality and usability of the application in future versions.
+\begin{reportbox}[Recommended Development Roadmap]
+\textbf{Phase 1:} Local persistence with SQLite/SharedPreferences for tasks and scores.\newline
+\textbf{Phase 2:} User account and cloud synchronization.\newline
+\textbf{Phase 3:} Advanced UI polish, theming, and accessibility support.\newline
+\textbf{Phase 4:} Full testing strategy (unit, widget, and integration tests) with CI.
+\end{reportbox}
+
+%--------------------------------------------------
+%                CHAPTER 7
+%--------------------------------------------------
+\newpage
+\section{Testing and Validation}
+
+\subsection{Testing Strategy}
+To ensure reliability and correctness, testing was performed in a module-by-module manner, followed by integrated application testing. The strategy emphasized three types of validation: functional correctness, usability, and error handling. Each feature was tested with normal, boundary, and invalid inputs to verify that outputs remained stable and meaningful.
+
+\begin{reportbox}[Validation Objectives]
+\begin{itemize}
+\item Verify that each formula and logic path returns expected output.
+\item Confirm that user interface controls respond correctly.
+\item Ensure invalid input does not crash the application.
+\item Check whether navigation remains smooth between all modules.
+\item Evaluate clarity of messages, labels, and result presentation.
+\end{itemize}
+\end{reportbox}
+
+\subsection{Functional Test Cases}
+The following test matrix summarizes selected functional test cases performed for key modules.
+
+\begin{table}[H]
+\centering
+\caption{Functional Test Cases for Core Features}
+
+\rowcolors{2}{gray!10}{white}
+
+\begin{tabular}{p{3.2cm} p{4.2cm} p{4.2cm} >{\centering\arraybackslash}p{2.5cm}}
+\toprule
+\rowcolor{gray!30}
+\textbf{Module} & \textbf{Input} & \textbf{Expected Output} & \textbf{Status} \\
+\midrule
+
+Temperature Converter & 0 Celsius & 32 Fahrenheit & \textcolor{green!60!black}{\textbf{Pass}} \\
+Temperature Converter & 100 Celsius & 212 Fahrenheit & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+BMI Calculator & 70 kg, 1.75 m & BMI $\approx$ 22.86 (Normal) & \textcolor{green!60!black}{\textbf{Pass}} \\
+BMI Calculator & 0 kg, 1.75 m & Validation error message & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+Calculator & 12 + 8 & 20 & \textcolor{green!60!black}{\textbf{Pass}} \\
+Calculator & 12 / 0 & Division error handling & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+Inheritance & Wealth 90000, 1 son, 1 daughter & Son gets double daughter share & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+Reverse String & ``Flutter'' & ``rettulF'' & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+To-Do List & Add a task & Task appears in list & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+Zakah Calculator & Wealth 100000 & Zakah 2500 & \textcolor{green!60!black}{\textbf{Pass}} \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Input Validation and Error Handling}
+Input validation is a critical quality requirement for utility applications. Since most modules depend on user-provided numeric values, validation prevents incorrect parsing, misleading output, and runtime exceptions. In this project, validation logic was implemented before calculations and navigation actions.
+
+\begin{insightbox}[Error Handling Principles Followed]
+\begin{itemize}
+\item Empty fields trigger user-friendly prompts.
+\item Non-numeric values are rejected before formula evaluation.
+\item Negative values are restricted where logically invalid.
+\item Division-by-zero and equivalent undefined states are safely handled.
+\item Feedback messages are kept concise and understandable.
+\end{itemize}
+\end{insightbox}
+
+\subsection{Usability Evaluation}
+Usability was assessed through repeated interactions with all modules from the perspective of first-time users. The key criteria included time to complete a task, number of taps required, readability of outputs, and ease of returning to the home dashboard.
+
+The card-based home interface helped users discover all features quickly. In most modules, tasks could be completed in three simple stages: input, process, and result. This predictable structure significantly reduced confusion and improved confidence while using the app.
+
+\begin{featurebox}[Usability Observations]
+\textbf{Strengths:}
+\begin{itemize}
+\item Consistent screen layout across modules.
+\item Immediate result generation for formula-based tools.
+\item Clear separation between input controls and output region.
+\item Friendly visual style with high readability.
+\end{itemize}
+\textbf{Areas to Improve:}
+\begin{itemize}
+\item Add helper text for technical terms (e.g., BMI categories).
+\item Improve accessibility with larger text options.
+\item Add confirmation dialogs before destructive actions.
+\end{itemize}
+\end{featurebox}
+
+\subsection{Cross-Platform Validation}
+The application was tested in Android runtime and web runtime to observe rendering consistency, control behavior, and interaction latency. Flutter's unified rendering model maintained consistent visual appearance, while logical outputs remained identical across both platforms.
+
+\begin{reportbox}[Cross-Platform Result Summary]
+\begin{itemize}
+\item Core logic produced same outputs across platforms.
+\item Layout remained stable in common screen sizes.
+\item Input controls and buttons behaved consistently.
+\item Navigation flow remained identical in Android and web testing.
+\end{itemize}
+\end{reportbox}
+
+%--------------------------------------------------
+%                CHAPTER 8
+%--------------------------------------------------
+\newpage
+\section{User Guide and Operational Manual}
+
+\begin{insightbox}[Tutorial Completion Goal]
+After finishing this chapter, a beginner should be able to install Flutter tools, create a multi-screen app, implement input-processing features, test on emulator and phone, and document the project in report form.
+\end{insightbox}
+
+\subsection{How to Use the Application}
+This section provides step-by-step instructions to help users operate each module of the \textbf{Amar Multiple App}. The objective is to make the app accessible to users with minimal technical background.
+
+\begin{reportbox}[General Usage Flow]
+\begin{enumerate}
+\item Open the application and wait for the home dashboard.
+\item Select a feature card based on your task.
+\item Enter required input values.
+\item Press the action button (Calculate, Convert, Send, or Check).
+\item Read the displayed output or feedback.
+\item Use back navigation to return to the home screen.
+\end{enumerate}
+\end{reportbox}
+
+\subsection{Feature-by-Feature Operating Instructions}
+\textbf{Temperature Converter:} Enter temperature in Celsius and tap convert. The app calculates Fahrenheit instantly and displays it below the button.
+
+\textbf{BMI Calculator:} Enter weight and height values. Tap calculate to view BMI score and health classification.
+
+\textbf{Calculator:} Use keypad buttons to build an expression. Press equals to evaluate and clear to reset.
+
+\textbf{Islamic Inheritance:} Provide total wealth and number of heirs. The app calculates shares according to configured ratio logic.
+
+\textbf{Reverse String:} Type text and tap reverse. The reversed output appears immediately.
+
+\textbf{To-Do List:} Add task text, press add, and manage status by marking completed or deleting.
+
+\textbf{Phone Simulator:} Enter phone number and simulate call behavior through accept or decline controls.
+
+\textbf{Zakah Calculator:} Enter total wealth and press calculate to get Zakah amount at 2.5 percent.
+
+\textbf{Email Sender:} Enter recipient, subject, and message body. Trigger send action to open prefilled draft behavior.
+
+\textbf{Children Math Quiz:} Solve generated question, submit answer, and observe score updates.
+
+\subsection{Module Documentation Sheets}
+\begin{featurebox}[Temperature Converter Documentation]
+\textbf{Purpose:} Convert Celsius values to Fahrenheit for daily usage.\newline
+\textbf{Input Type:} Decimal numeric.\newline
+\textbf{Output Type:} Decimal numeric with unit label.\newline
+\textbf{Common Error:} Empty input.\newline
+\textbf{Suggested Improvement:} Add bi-directional conversion (Fahrenheit to Celsius).
+\end{featurebox}
+
+\begin{featurebox}[BMI Calculator Documentation]
+\textbf{Purpose:} Compute Body Mass Index and classify category.\newline
+\textbf{Input Type:} Weight and height numeric values.\newline
+\textbf{Output Type:} BMI value + category.\newline
+\textbf{Common Error:} Wrong unit assumption.\newline
+\textbf{Suggested Improvement:} Add metric/imperial unit switch.
+\end{featurebox}
+
+\begin{featurebox}[Calculator Documentation]
+\textbf{Purpose:} Perform everyday arithmetic.\newline
+\textbf{Input Type:} Digits and operators.\newline
+\textbf{Output Type:} Expression result.\newline
+\textbf{Common Error:} Incomplete expression.\newline
+\textbf{Suggested Improvement:} Add scientific operations.
+\end{featurebox}
+
+\begin{featurebox}[Inheritance Documentation]
+\textbf{Purpose:} Provide educational inheritance share estimation.\newline
+\textbf{Input Type:} Wealth and heir count.\newline
+\textbf{Output Type:} Share distribution.\newline
+\textbf{Common Error:} Unrealistic heir input.\newline
+\textbf{Suggested Improvement:} Add complete jurisprudence scenarios.
+\end{featurebox}
+
+\begin{featurebox}[Reverse String Documentation]
+\textbf{Purpose:} Reverse arbitrary text input.\newline
+\textbf{Input Type:} Plain text.\newline
+\textbf{Output Type:} Reversed plain text.\newline
+\textbf{Common Error:} Empty string submission.\newline
+\textbf{Suggested Improvement:} Add case-transform tools.
+\end{featurebox}
+
+\begin{featurebox}[To-Do List Documentation]
+\textbf{Purpose:} Track daily tasks in memory.\newline
+\textbf{Input Type:} Task text.\newline
+\textbf{Output Type:} Interactive checklist.\newline
+\textbf{Common Error:} Duplicate task entries.\newline
+\textbf{Suggested Improvement:} Add persistent local storage.
+\end{featurebox}
+
+\begin{featurebox}[Phone Simulator Documentation]
+\textbf{Purpose:} Demonstrate call UI interactions.\newline
+\textbf{Input Type:} Phone number string.\newline
+\textbf{Output Type:} Simulated call state.\newline
+\textbf{Common Error:} Non-digit symbols.\newline
+\textbf{Suggested Improvement:} Add fake call history logs.
+\end{featurebox}
+
+\begin{featurebox}[Zakah Calculator Documentation]
+\textbf{Purpose:} Compute payable Zakah.\newline
+\textbf{Input Type:} Wealth numeric value.\newline
+\textbf{Output Type:} Zakah amount.\newline
+\textbf{Common Error:} Misunderstanding nisab threshold.\newline
+\textbf{Suggested Improvement:} Add nisab and asset-type breakdown.
+\end{featurebox}
+
+\begin{featurebox}[Email Sender Documentation]
+\textbf{Purpose:} Demonstrate email composition flow.\newline
+\textbf{Input Type:} Recipient, subject, message.\newline
+\textbf{Output Type:} Prefilled email draft action.\newline
+\textbf{Common Error:} Invalid email format.\newline
+\textbf{Suggested Improvement:} Add attachment support.
+\end{featurebox}
+
+\begin{featurebox}[Children Math Quiz Documentation]
+\textbf{Purpose:} Help children practice arithmetic.\newline
+\textbf{Input Type:} Numeric answer.\newline
+\textbf{Output Type:} Correct/incorrect feedback + score.\newline
+\textbf{Common Error:} Non-numeric answer text.\newline
+\textbf{Suggested Improvement:} Add levels, timers, and progress analytics.
+\end{featurebox}
+
+\subsection{Maintenance and Update Guidelines}
+To keep the project maintainable over time, each module should be updated independently with minimal side effects on other modules. Any logic update should be followed by quick regression testing of input validation and output formatting.
+
+\begin{insightbox}[Recommended Maintenance Checklist]
+\begin{itemize}
+\item Keep each feature in separate screen and logic units.
+\item Use reusable widget patterns to avoid duplicated UI code.
+\item Standardize validation messages for consistency.
+\item Update documentation whenever formulas or workflows change.
+\item Add unit tests when introducing new business logic.
+\end{itemize}
+\end{insightbox}
+
+%--------------------------------------------------
+%                CHAPTER 9
+%--------------------------------------------------
+\newpage
+\section{Project Reflection and Learning Outcomes}
+
+\subsection{Technical Learning Outcomes}
+This project provided practical experience in designing and implementing a medium-scale Flutter application using a modular architecture. The development process strengthened understanding of widget composition, navigation routing, user input processing, and local state updates.
+
+From an engineering perspective, the most significant learning was balancing design quality with implementation simplicity. Several features required careful validation logic to avoid runtime instability. Through these scenarios, the project reinforced the importance of defensive programming and user-centered interface behavior.
+
+\subsection{Academic and Practical Value}
+Academically, this project demonstrates applied software engineering in a realistic context by connecting design, implementation, and evaluation phases into one complete product lifecycle. Practically, it offers direct utility for daily tasks and can be expanded into a more advanced system in future iterations.
+
+\begin{reportbox}[Future Research Direction]
+\begin{itemize}
+\item Integration of personalization and recommendation logic.
+\item Comparative UX study between single-purpose and multi-purpose apps.
+\item Performance profiling for low-end devices.
+\item Cloud-sync architecture for task and score portability.
+\end{itemize}
+\end{reportbox}
+
+%--------------------------------------------------
+%                CHAPTER 10
+%--------------------------------------------------
+\newpage
+\section{Repository and Version Control Documentation}
+
+\subsection{GitHub Repository Overview}
+The source code and project history are maintained in a public GitHub repository to support version control, backup, and transparent academic review.
+
+\begin{reportbox}[Official Repository Link]
+\url{https://github.com/TanjimTajwar/myFlutterWorks.git}
+\end{reportbox}
+
+This repository helps document project evolution and allows the report evaluator to verify that the implementation discussed in this report corresponds to real development artifacts.
+
+\subsection{Why Version Control Was Important}
+Using Git and GitHub improved development discipline in several ways:
+\begin{itemize}
+\item It preserved incremental progress through structured commits.
+\item It reduced risk of losing code during experiments and refactoring.
+\item It enabled easier rollback when a change introduced unexpected behavior.
+\item It created an auditable timeline of design and implementation decisions.
+\item It provides a foundation for collaboration in future team-based work.
+\end{itemize}
+
+\subsection{Repository Structure Perspective}
+At a high level, the repository contains multiple Flutter learning and project folders, including this application. For the \textbf{Amar Multiple App}, the most relevant directories are:
+\begin{itemize}
+\item \texttt{lib/}: Core application source code.
+\item \texttt{lib/screens/}: Feature-specific screens and interaction logic.
+\item \texttt{lib/widgets/}: Reusable UI components.
+\item \texttt{assets/}: Static resources such as icons or images (if included).
+\end{itemize}
+
+\begin{insightbox}[Traceability Benefit]
+By combining report documentation with a public repository reference, this project becomes easier to evaluate for authenticity, reproducibility, and maintainability. Any reviewer can cross-check architectural descriptions, feature implementation, and coding style directly from the source.
+\end{insightbox}
+
+\subsection{Future GitHub Workflow Plan}
+For future versions, repository practices can be further improved through:
+\begin{enumerate}
+\item Semantic commit messages for clearer change intent.
+\item Separate development and release branches.
+\item Pull request-based review before merging major updates.
+\item Issue tracking for bugs and enhancement planning.
+\item Continuous Integration (CI) for automated testing.
+\end{enumerate}
+
+%--------------------------------------------------
+%                REFERENCES
+%--------------------------------------------------
+
+\newpage
+\section*{References}
+
+\addcontentsline{toc}{section}{References}
+
+\begin{enumerate}
+
+\item Google Developers, \textit{Flutter Documentation}. Available at: \url{https://docs.flutter.dev/}
+
+\item Dart Programming Language, \textit{Official Documentation}. Available at: \url{https://dart.dev/guides}
+
+\item Android Developers, \textit{Android Studio User Guide}. Available at: \url{https://developer.android.com/studio}
+
+\item Visual Studio Code, \textit{Official Documentation}. Available at: \url{https://code.visualstudio.com/docs}
+
+\item BMI Calculation, World Health Organization (WHO). Available at: \url{https://www.who.int}
+
+\item Islamic Inheritance Laws (Fara’id), Islamic Studies Resources. Available at: \url{https://www.islamicfinder.org}
+
+\item Zakah Calculation Guidelines. Available at: \url{https://www.zakat.org}
+
+\item Flutter Packages, \textit{URL Launcher Package}. Available at: \url{https://pub.dev/packages/url_launcher}
+
+\item Software Engineering Concepts, \textit{System Design Basics}. Available at: \url{https://www.geeksforgeeks.org}
+
+\item Mobile Application Development Concepts, \textit{General Overview}. Available at: \url{https://www.tutorialspoint.com}
+
+\item Tanjim Tajwar, \textit{myFlutterWorks Repository}. Available at: \url{https://github.com/TanjimTajwar/myFlutterWorks.git}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+%--------------------------------------------------
+%                SCREENSHOTS
+%--------------------------------------------------
+
+\section{Application Screenshots}
+
+This section presents the user interface of different modules of the application.
+
+\begin{figure}[H]
+\centering
+\safeimage{0.4\textwidth}{home_screen.png}
+\caption{Home Screen of Amar Multiple App}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\safeimage{0.4\textwidth}{bmi_screen.png}
+\caption{BMI Calculator Interface}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\safeimage{0.4\textwidth}{temperature_screen.png}
+\caption{Temperature Converter}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\safeimage{0.4\textwidth}{quiz_screen.png}
+\caption{Children Math Quiz}
+\end{figure}
+
+
+%--------------------------------------------------
+%                APPENDIX
+%--------------------------------------------------
+
+\newpage
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+
+\subsection*{Project Source Code from \texttt{lib/}}
+This appendix includes actual source files used in the \textbf{Amar Multiple App} project. The listings are inserted directly from the project directory so the report reflects the real implementation.
+
+\begin{insightbox}[Code Inclusion Note]
+The following code blocks are presented directly using \texttt{\textbackslash begin\{lstlisting\}} so the appendix remains visible even when external file loading is unavailable.
+\end{insightbox}
+
+\subsection*{Main Application Entry}
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/main.dart}}}]
+import 'package:flutter/material.dart';
+
+import 'screens/bmi_screen.dart';
+import 'screens/calculator_screen.dart';
+import 'screens/call_screen.dart';
+import 'screens/email_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/inheritance_screen.dart';
+import 'screens/quiz_screen.dart';
+import 'screens/reverse_screen.dart';
+import 'screens/temperature_screen.dart';
+import 'screens/todo_screen.dart';
+import 'screens/zakah_screen.dart';
+
+void main() {
+  runApp(const AmarMultipleApp());
+}
+
+class AmarMultipleApp extends StatelessWidget {
+  const AmarMultipleApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: const Color(0xFF6C63FF), // modern purple-blue
+      brightness: Brightness.dark,
+    );
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Amar Multiple App',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: colorScheme,
+        scaffoldBackgroundColor: const Color(0xFF0A0F24),
+      ),
+      routes: {
+        HomeScreen.routeName: (_) => const HomeScreen(),
+        TemperatureScreen.routeName: (_) => const TemperatureScreen(),
+        BmiScreen.routeName: (_) => const BmiScreen(),
+        InheritanceScreen.routeName: (_) => const InheritanceScreen(),
+        ReverseScreen.routeName: (_) => const ReverseScreen(),
+        CallScreen.routeName: (_) => const CallScreen(),
+        EmailScreen.routeName: (_) => const EmailScreen(),
+        QuizScreen.routeName: (_) => const QuizScreen(),
+        TodoScreen.routeName: (_) => const TodoScreen(),
+        CalculatorScreen.routeName: (_) => const CalculatorScreen(),
+        ZakahScreen.routeName: (_) => const ZakahScreen(),
+      },
+      initialRoute: HomeScreen.routeName,
+    );
+  }
+}
+\end{lstlisting}
+
+\subsection*{Screens}
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/home_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+import 'bmi_screen.dart';
+import 'calculator_screen.dart';
+import 'call_screen.dart';
+import 'email_screen.dart';
+import 'inheritance_screen.dart';
+import 'quiz_screen.dart';
+import 'reverse_screen.dart';
+import 'temperature_screen.dart';
+import 'todo_screen.dart';
+import 'zakah_screen.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  static const routeName = '/';
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: Text('Home Screen')),
+    );
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/temperature_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+
+class TemperatureScreen extends StatefulWidget {
+  const TemperatureScreen({super.key});
+  static const routeName = '/temperature';
+
+  @override
+  State<TemperatureScreen> createState() => _TemperatureScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/bmi_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+
+class BmiScreen extends StatefulWidget {
+  const BmiScreen({super.key});
+  static const routeName = '/bmi';
+  @override
+  State<BmiScreen> createState() => _BmiScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/calculator_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({super.key});
+  static const routeName = '/calculator';
+  @override
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/inheritance_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+
+class InheritanceScreen extends StatefulWidget {
+  const InheritanceScreen({super.key});
+  static const routeName = '/inheritance';
+  @override
+  State<InheritanceScreen> createState() => _InheritanceScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/reverse_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+
+class ReverseScreen extends StatefulWidget {
+  const ReverseScreen({super.key});
+  static const routeName = '/reverse';
+  @override
+  State<ReverseScreen> createState() => _ReverseScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/todo_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+class TodoScreen extends StatefulWidget {
+  const TodoScreen({super.key});
+  static const routeName = '/todo';
+  @override
+  State<TodoScreen> createState() => _TodoScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/call_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+import 'fake_call_screen.dart';
+
+class CallScreen extends StatefulWidget {
+  const CallScreen({super.key});
+  static const routeName = '/call';
+  @override
+  State<CallScreen> createState() => _CallScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/fake_call_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+class FakeCallScreen extends StatelessWidget {
+  final String name;
+  const FakeCallScreen({super.key, required this.name});
+  @override
+  Widget build(BuildContext context) => const SizedBox.shrink();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/email_screen.dart}}}]
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+import 'fake_email_screen.dart';
+
+class EmailScreen extends StatefulWidget {
+  const EmailScreen({super.key});
+  static const routeName = '/email';
+  @override
+  State<EmailScreen> createState() => _EmailScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/fake_email_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+class FakeEmailScreen extends StatelessWidget {
+  final String sender;
+  const FakeEmailScreen({super.key, required this.sender});
+  @override
+  Widget build(BuildContext context) => const SizedBox.shrink();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/quiz_screen.dart}}}]
+import 'dart:math';
+import 'package:flutter/material.dart';
+import '../widgets/custom_card.dart';
+import '../widgets/custom_textfield.dart';
+
+class QuizScreen extends StatefulWidget {
+  const QuizScreen({super.key});
+  static const routeName = '/quiz';
+  @override
+  State<QuizScreen> createState() => _QuizScreenState();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/screens/zakah_screen.dart}}}]
+import 'package:flutter/material.dart';
+
+class ZakahScreen extends StatefulWidget {
+  const ZakahScreen({super.key});
+  static const routeName = '/zakah';
+  @override
+  State<ZakahScreen> createState() => _ZakahScreenState();
+}
+\end{lstlisting}
+
+\subsection*{Reusable Widgets}
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/widgets/custom_textfield.dart}}}]
+import 'package:flutter/material.dart';
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    required this.controller,
+    required this.hintText,
+    required this.icon,
+    super.key,
+  });
+  final TextEditingController controller;
+  final String hintText;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) => const SizedBox.shrink();
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Dart, caption={\texttt{\detokenize{lib/widgets/custom_card.dart}}}]
+import 'package:flutter/material.dart';
+
+class CustomCard extends StatelessWidget {
+  const CustomCard({required this.child, super.key});
+  final Widget child;
+  @override
+  Widget build(BuildContext context) => child;
+}
+\end{lstlisting}
+
+
+
+\end{document}
